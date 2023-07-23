@@ -1,0 +1,23 @@
+cd Ternary_Binary_Transformer-main
+git clone https://huggingface.co/Aktsvigun/bart-base_xsum_42
+git clone https://huggingface.co/datasets/xsum
+pip install ipywidgets 
+pip install setuptools==57.5.0
+pip install nltk
+pip install accelerate==0.5.1
+pip install transformers==4.17.0
+pip install datasets==1.18.4
+pip install sacrebleu==2.0
+pip install tensorboard
+pip install rouge_score
+bash scripts/run_xsum.sh 2 8 3e-4
+bash scripts/run_xsum.sh 2 2 3.5e-4
+bash scripts/run_xsum.sh 1 8 2.5e-4
+bash scripts/run_xsum.sh 1 1 5e-4
+
+CUDA_LAUNCH_BLOCKING是CUDA的环境变量，设为1可以disable CUDA执行的时候的异步性，所以能报出细节的错误
+#t -mix os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
+#os.environ["CUDA_VISIBLE_DEVICES"]='0,1,2'
+#num_processed 3
+#args.dataset_name
+
